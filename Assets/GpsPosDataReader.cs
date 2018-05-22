@@ -25,17 +25,23 @@ public class GpsPosDataReader : MonoBehaviour {
         string text = "";
         List<GpsPosData> gpsPosDataList = new List<GpsPosData>();
 
-        using (StreamReader sr = new StreamReader(fileName.text, Encoding.GetEncoding("Shift_JIS")))
+        if (File.Exists(fileName.text))
         {
-            // 先頭の2行を読み飛ばす
-            text = sr.ReadLine();
-            text = sr.ReadLine();
-            // データオブジェクト生成
-            while ((text = sr.ReadLine()) != null)
+            using (StreamReader sr = new StreamReader(fileName.text, Encoding.GetEncoding("Shift_JIS")))
             {
-                gpsPosDataList.Add(new GpsPosData(text));
+                // 先頭の2行を読み飛ばす
+                text = sr.ReadLine();
+                text = sr.ReadLine();
+                // データオブジェクト生成
+                while ((text = sr.ReadLine()) != null)
+                {
+                    gpsPosDataList.Add(new GpsPosData(text));
+                }
+                textMessage.text = "読み込み完了。" + gpsPosDataList.Count.ToString() + "オブジェクト生成。";
             }
-            textMessage.text = "読み込み完了。" + gpsPosDataList.Count.ToString() + "オブジェクト生成。";
+        } else
+        {
+            textMessage.text = "指定されたファイルが存在しません。";
         }
     }
 }

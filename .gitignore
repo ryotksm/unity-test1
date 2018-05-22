@@ -1,10 +1,7 @@
 Library
 Temp
-exe
-*.exe
 *.pidb
 *.unityproj
 *.sln
 *.userprefs
 *.csproj
-exe.zip

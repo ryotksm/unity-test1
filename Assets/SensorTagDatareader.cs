@@ -24,18 +24,24 @@ public class SensorTagDatareader : MonoBehaviour {
     {
         string text = "";
         List<SensorTagData> sensorTagDataList = new List<SensorTagData>();
-
-        using (StreamReader sr = new StreamReader(fileName.text, Encoding.GetEncoding("Shift_JIS")))
+        if (File.Exists(fileName.text))
         {
-            // 先頭の2行を読み飛ばす
-            text = sr.ReadLine();
-            text = sr.ReadLine();
-            // データオブジェクト生成
-            while ((text = sr.ReadLine()) != null)
+            using (StreamReader sr = new StreamReader(fileName.text, Encoding.GetEncoding("Shift_JIS")))
             {
-                sensorTagDataList.Add(new SensorTagData(text));
+                // 先頭の2行を読み飛ばす
+                text = sr.ReadLine();
+                text = sr.ReadLine();
+                // データオブジェクト生成
+                while ((text = sr.ReadLine()) != null)
+                {
+                    sensorTagDataList.Add(new SensorTagData(text));
+                }
+                textMessage.text = "読み込み完了。" + sensorTagDataList.Count.ToString() + "オブジェクト生成。";
             }
-            textMessage.text = "読み込み完了。" + sensorTagDataList.Count.ToString() + "オブジェクト生成。";
+        }
+        else
+        {
+            textMessage.text = "指定されたファイルが存在しません。";
         }
     }
 }
