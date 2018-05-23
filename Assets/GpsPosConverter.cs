@@ -17,7 +17,7 @@ namespace Assets
         // x : 北方向への移動距離（南に移動したらマイナス）
         // y : 東方向への移動距離（西に移動したらマイナス）
         // x : 上方向への移動距離（下に移動したらマイナス）
-        static Vector3 GetDistance(GpsPosData a, GpsPosData b)
+        public static Vector3 GetDistance(GpsPosData a, GpsPosData b)
         {
             double x, y, z;
             x = y = z = 0;

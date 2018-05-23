@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 
 namespace Assets
 {
-    class GpsPosData
+    public class GpsPosData
     {
         private DateTime gpst;      // GPS時刻
         private double latitude;    // 緯度(WGS84/ellipsoidal)

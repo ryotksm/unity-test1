@@ -2,7 +2,7 @@
 
 namespace Assets
 {
-    class SensorTagData
+    public class SensorTagData
     {
         private DateTime time;
         private double acc_x;   // 加速度 X

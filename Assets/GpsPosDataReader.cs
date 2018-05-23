@@ -4,11 +4,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using Assets;
 
 public class GpsPosDataReader : MonoBehaviour {
 
     public InputField fileName;
     public Text textMessage;
+    public Heli heli;
 
     // Use this for initialization
     void Start () {
@@ -38,6 +40,7 @@ public class GpsPosDataReader : MonoBehaviour {
                     gpsPosDataList.Add(new GpsPosData(text));
                 }
                 textMessage.text = "読み込み完了。" + gpsPosDataList.Count.ToString() + "オブジェクト生成。";
+                heli.SetGpsPosList(gpsPosDataList);
             }
         } else
         {
